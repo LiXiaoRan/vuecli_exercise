@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <div v-html="message"></div>
     <h2>Essential Links</h2>
     <ul>
       <li>
@@ -88,7 +89,8 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: '欢迎来到vue页面'
+      msg: '欢迎来到vue页面',
+      message:'<h1>教程</h1>'
     }
   }
 }
