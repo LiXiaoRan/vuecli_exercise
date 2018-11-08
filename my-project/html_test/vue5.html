@@ -18,7 +18,7 @@
     
 <div id="app">
     {{5+5}}<br>
-    {{message.split('').reverse().join('||')}}<br>
+    {{message.split('').reverse().join('||')|capitalize}}<br>
     {{ok?'true':'no'}}<br>
     <label for="r1">修改颜色</label>
     
@@ -45,7 +45,7 @@
         data:{
             class1:false,
             ok:true,
-            message:'RUNOOB',
+            message:'runoob',
             id:1,
             url:'http://www.runoob.com'
             },
@@ -55,7 +55,17 @@
                 this.message=this.message.split('').reverse().join('')
                 
             }
-            }
+            },
+        filters:{
+            capitalize:function(val){
+                if (!val) {
+                    return ''
+                }
+                val=val.toString();
+                return val.charAt(0).toUpperCase()+val.slice(1)
+                }
+        }
+
     });
 </script>
 
