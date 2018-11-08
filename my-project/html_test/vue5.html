@@ -17,6 +17,9 @@
 <body>
     
 <div id="app">
+    {{5+5}}<br>
+    {{message.split('').reverse().join('||')}}<br>
+    {{ok?'true':'no'}}<br>
     <label for="r1">修改颜色</label>
     <input type="checkbox" v-model="class1" id="r1">
     <br>
@@ -30,7 +33,10 @@
     new Vue({
         el:'#app',
         data:{
-            class1:false
+            class1:false,
+            ok:true,
+            message:'RUNOOB',
+            id:1
         }
     });
 </script>
