@@ -21,12 +21,16 @@
     {{message.split('').reverse().join('||')}}<br>
     {{ok?'true':'no'}}<br>
     <label for="r1">修改颜色</label>
+    
     <input type="checkbox" v-model="class1" id="r1">
     <br>
     <br>
     <div v-bind:class="{'class1': class1}">
             v-bind:class 指令
           </div>
+    <br>
+    <p v-if="class1">now you are seen me</p>
+
 </div>
 
 <script>
