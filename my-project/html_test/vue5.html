@@ -30,7 +30,9 @@
           </div>
     <br>
     <p v-if="class1">now you are seen me</p>
-
+    <br>
+    <br>
+    <pre> <a :href="url">教程</a></pre>
 </div>
 
 <script>
@@ -40,8 +42,9 @@
             class1:false,
             ok:true,
             message:'RUNOOB',
-            id:1
-        }
+            id:1,
+            url:'http://www.runoob.com'
+            }
     });
 </script>
 
