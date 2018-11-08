@@ -34,8 +34,9 @@
     <br>
     <pre> <a :href="url">教程</a></pre>
     <br>
-    <input v-model="message">      
-
+    <input v-model="message">  
+    <br>
+    <button v-on:click="reverseMessage">反转字符串</button>
 </div>
 
 <script>
@@ -47,6 +48,13 @@
             message:'RUNOOB',
             id:1,
             url:'http://www.runoob.com'
+            },
+        methods:{
+
+            reverseMessage:function(){
+                this.message=this.message.split('').reverse().join('')
+                
+            }
             }
     });
 </script>
