@@ -37,6 +37,12 @@
     <input v-model="message">  
     <br>
     <button v-on:click="reverseMessage">反转字符串</button>
+
+    <div v-if="Math.random()>0.5">sorry</div>
+    <div v-else-if="Math.random()>0.7">sorry 0.7</div>
+    <div v-else-if="Math.random()>0.9">sorry 0.9</div>
+    <div v-else>Nosorry</div>
+
 </div>
 
 <script>
