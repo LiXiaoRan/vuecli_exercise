@@ -43,6 +43,19 @@
     <div v-else-if="Math.random()>0.9">sorry 0.9</div>
     <div v-else>Nosorry</div>
 
+    <ol>
+        <li v-for="item in sites">
+            {{item.name}}
+        </li>        
+    </ol>
+
+    <ul>
+        <template v-for="item in sites">
+            <li>{{item.name}}</li>
+            <li>-------------</li>
+        </template>
+    </ul>
+
 </div>
 
 <script>
@@ -53,8 +66,14 @@
             ok:true,
             message:'runoob',
             id:1,
-            url:'http://www.runoob.com'
+            url:'http://www.runoob.com',
+            sites: [
+                { name: 'Runoob' },
+                { name: 'Google' },
+                { name: 'Taobao' }
+                ]
             },
+
         methods:{
 
             reverseMessage:function(){
