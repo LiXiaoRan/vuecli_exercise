@@ -69,12 +69,15 @@
         <li v-for="n in 10">{{ n }}</li>
     </ul>
 
+    <p>使用计算属性反转的字符串：{{reverseMessageC}}</p>
+    <p>使用set和get去改变和输出计算属性: {{site}} </p>
+
 </div>
 
 
 
 <script>
-    new Vue({
+   var vm = new Vue({
         el:'#app',
         data:{
             class1:false,
@@ -91,9 +94,29 @@
                 name: '菜鸟教程',
                 url: 'http://www.runoob.com',
                 slogan: '学的不仅是技术，更是梦想！'
-    }
+                }
 
             },
+        computed:{
+            
+            reverseMessageC:function(){
+                return this.message.split('').reverse().join('')
+            },
+            site:{
+                get:function(){
+                    return this.message+' '+this.url
+
+                },
+
+                set:function(newVal){
+                    var names=newVal.split(' ')
+                    this.message=names[0]
+                    this.url=names[names.length-1]
+                }
+
+            }
+
+        },
 
         methods:{
 
@@ -113,6 +136,9 @@
         }
 
     });
+
+    vm.site = '菜鸟教程 http://www.runoob.com';
+
 </script>
 
 </body>
