@@ -24,6 +24,15 @@
   .text-danger {
 	background: red;
 }
+
+    .base{
+        width: 100px;
+        height: 200px;
+    }
+
+    .baseColor{
+        background: darkgreen
+    }
 </style>
 
 <body>
@@ -93,8 +102,9 @@
       {{meters}}
     </div>
 
-    <div v-bind:class="{active:isActive,text-danger:hashError}"></div>
-
+    <div v-bind:class="{active:isActive,'text-danger':hashError}"></div>
+    <div v-bind:class="classRender"></div>
+    <div v-bind:class="classComputed"></div>
   </div>
 
 
@@ -110,7 +120,7 @@
         message: 'runoob',
         id: 1,
         isActive: true,
-        hashError:true,
+        hashError: true,
         url: 'http://www.runoob.com',
         sites: [{
             name: 'Runoob'
@@ -127,7 +137,12 @@
           url: 'http://www.runoob.com',
           slogan: '学的不仅是技术，更是梦想！'
         },
-        clickCount: 0
+        clickCount: 0,
+        classRender: {
+          active: true,
+          'text-danger': true
+
+        }
       },
       computed: {
 
@@ -146,6 +161,14 @@
             this.url = names[names.length - 1]
           }
 
+        },
+
+        classComputed:function (){
+            return  {
+                base:true,
+                baseColor:true,
+                active:this.isActive&&!this.hashError
+            }
         }
 
       },
