@@ -13,6 +13,17 @@
     background: #444;
     color: #eee;
   }
+
+  .active{
+      width: 100px;
+      height: 100px;
+      background: aquamarine;
+      margin: 20px;
+  }
+
+  .text-danger {
+	background: red;
+}
 </style>
 
 <body>
@@ -82,6 +93,8 @@
       {{meters}}
     </div>
 
+    <div v-bind:class="{active:isActive,text-danger:hashError}"></div>
+
   </div>
 
 
@@ -96,6 +109,8 @@
         ok: true,
         message: 'runoob',
         id: 1,
+        isActive: true,
+        hashError:true,
         url: 'http://www.runoob.com',
         sites: [{
             name: 'Runoob'
