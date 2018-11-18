@@ -1,7 +1,6 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <div v-html="message"></div>
     <h2>Essential Links</h2>
     <ul>
       <li>
@@ -85,14 +84,15 @@
 </template>
 
 <script>
+import vue9 from 'vue9count_machine'
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: '欢迎来到vue页面',
-      message:'<h1>教程</h1>'
+      msg: '欢迎来到vue页面'
     }
-  }
+  },
+  components: { vue9 }
 }
 </script>
 

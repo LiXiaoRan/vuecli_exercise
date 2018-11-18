@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
 </head>
 <style>
-    .class1{
+  .class1{
     background: #444;
     color: #eee;
   }
 </style>
 
 <body>
-    
-<div id="app">
+
+  <div id="app">
     {{5+5}}<br>
     {{message.split('').reverse().join('||')|capitalize}}<br>
     {{ok?'true':'no'}}<br>
     <label for="r1">修改颜色</label>
-    
+
     <input type="checkbox" v-model="class1" id="r1">
     <br>
     <br>
     <div v-bind:class="{'class1': class1}">
-            v-bind:class 指令
-          </div>
+      v-bind:class 指令
+    </div>
     <br>
     <p v-if="class1">now you are seen me</p>
     <br>
     <br>
     <pre> <a :href="url">教程</a></pre>
     <br>
-    <input v-model="message">  
+    <input v-model="message">
     <br>
     <button v-on:click="reverseMessage">反转字符串</button>
 
@@ -44,102 +45,136 @@
     <div v-else>Nosorry</div>
 
     <ol>
-        <li v-for="item in sites">
-            {{item.name}}
-        </li>        
+      <li v-for="item in sites">
+        {{item.name}}
+      </li>
     </ol>
 
     <ul>
-        <template v-for="item in sites">
-            <li>{{item.name}}</li>
-            <li>-------------</li>
-        </template>
+      <template v-for="item in sites">
+        <li>{{item.name}}</li>
+        <li>-------------</li>
+      </template>
     </ul>
 
     <ul>
-        <li v-for="value in object">{{value}}</li>
-    </ul>
-    
-    <ul>
-        <li v-for="(value,key,index) in object">{{index}} : {{key}} : {{value}}</li>
+      <li v-for="value in object">{{value}}</li>
     </ul>
 
-    
     <ul>
-        <li v-for="n in 10">{{ n }}</li>
+      <li v-for="(value,key,index) in object">{{index}} : {{key}} : {{value}}</li>
+    </ul>
+
+
+    <ul>
+      <li v-for="n in 10">{{ n }}</li>
     </ul>
 
     <p>使用计算属性反转的字符串：{{reverseMessageC}}</p>
     <p>使用set和get去改变和输出计算属性: {{site}} </p>
 
-</div>
+    <p style="font: size 25px;">计数器: {{clickCount}}</p>
+    <button @click="clickCount++">点我</button>
+
+    <div>
+      千米：<input type="text" v-model="kilometers">
+      米：<input type="text" v-model="meters">
+      {{meters}}
+    </div>
+
+  </div>
 
 
 
-<script>
-   var vm = new Vue({
-        el:'#app',
-        data:{
-            class1:false,
-            ok:true,
-            message:'runoob',
-            id:1,
-            url:'http://www.runoob.com',
-            sites: [
-                { name: 'Runoob' },
-                { name: 'Google' },
-                { name: 'Taobao' }
-                ],
-            object: {
-                name: '菜鸟教程',
-                url: 'http://www.runoob.com',
-                slogan: '学的不仅是技术，更是梦想！'
-                }
-
-            },
-        computed:{
-            
-            reverseMessageC:function(){
-                return this.message.split('').reverse().join('')
-            },
-            site:{
-                get:function(){
-                    return this.message+' '+this.url
-
-                },
-
-                set:function(newVal){
-                    var names=newVal.split(' ')
-                    this.message=names[0]
-                    this.url=names[names.length-1]
-                }
-
-            }
-
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        class1: false,
+        meters: 0,
+        kilometers: 0,
+        ok: true,
+        message: 'runoob',
+        id: 1,
+        url: 'http://www.runoob.com',
+        sites: [{
+            name: 'Runoob'
+          },
+          {
+            name: 'Google'
+          },
+          {
+            name: 'Taobao'
+          }
+        ],
+        object: {
+          name: '菜鸟教程',
+          url: 'http://www.runoob.com',
+          slogan: '学的不仅是技术，更是梦想！'
         },
+        clickCount: 0
+      },
+      computed: {
 
-        methods:{
+        reverseMessageC: function () {
+          return this.message.split('').reverse().join('')
+        },
+        site: {
+          get: function () {
+            return this.message + ' ' + this.url
 
-            reverseMessage:function(){
-                this.message=this.message.split('').reverse().join('')
-                
-            }
-            },
-        filters:{
-            capitalize:function(val){
-                if (!val) {
-                    return ''
-                }
-                val=val.toString();
-                return val.charAt(0).toUpperCase()+val.slice(1)
-                }
+          },
+
+          set: function (newVal) {
+            var names = newVal.split(' ')
+            this.message = names[0]
+            this.url = names[names.length - 1]
+          }
+
         }
+
+      },
+
+
+      methods: {
+
+        reverseMessage: function () {
+          this.message = this.message.split('').reverse().join('')
+
+        }
+      },
+      filters: {
+        capitalize: function (val) {
+          if (!val) {
+            return ''
+          }
+          val = val.toString();
+          return val.charAt(0).toUpperCase() + val.slice(1)
+        }
+      },
+      watch: {
+        meters: function (val) {
+          this.meters = val;
+          this.kilometers = val / 1000;
+          console.log('watch 执行了' + this.meters + "  kilo is " + this.kilometers);
+        },
+        kilometers: function (val) {
+          this.kilometers = val;
+          this.meters = val * 1000;
+          console.log('watch 执行了');
+
+        }
+      }
 
     });
 
     vm.site = '菜鸟教程 http://www.runoob.com';
+    vm.$watch('clickCount', (nval, oval) => {
+      alert('计数器的变化: ' + oval + " 变成了 " + nval)
+    })
 
-</script>
+  </script>
 
 </body>
+
 </html>
